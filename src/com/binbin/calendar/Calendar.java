@@ -47,8 +47,26 @@ public class Calendar {
 		}
 		sum+=1;
 		
+		
+		
+		//判断2月份
 		//计算月份天数，存在一个变量里
-		switch (month) {
+		if(month==2){
+			//判断是否为闰年
+			if(year%4==0&&year%100!=0||year%400==0){
+				day=29;
+			}else{
+				day=28;
+			}
+		}else{
+			//判断是否小月
+			if(month==4||month==6||month==9||month==11){
+				day=30;
+			}else{
+				day=31;
+			}
+		}
+/*		switch (month) {
 	      case 4:
 	      case 6:
 	      case 9:
@@ -64,7 +82,6 @@ public class Calendar {
 	      case 12:
 	    	   day=31;
 	    	   break;
-
 	default:
 		if(year%4==0&&year%100!=0||year%400==0){
 			day=29;
@@ -72,7 +89,8 @@ public class Calendar {
 			day=28;
 		}
 		break;
-	}
+	}*/
+		
 		
 		//天数
 		//System.out.println("1990年1月1日到2016年5月7日一共"+sum+"天");
