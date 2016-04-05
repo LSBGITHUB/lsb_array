@@ -1,5 +1,7 @@
 package com.binbin.calendar;
 
+import java.util.Scanner;
+
 /**
  * 日历
  * @author Administrator
@@ -7,11 +9,17 @@ package com.binbin.calendar;
  */
 public class Calendar {
      public static void main(String[] args) {
-		@SuppressWarnings("unused")
-		int sum=0;//总数
+    	 
+		Scanner in=new Scanner(System.in);
+    	 System.out.println("请输入年份");
+    	 int year=in.nextInt();
+    	 System.out.println("请输入月份");
+    	 int month=in.nextInt();
+		 int sum=0;//总数
+		 int day=0;
 		//计算出1990年到2016年相隔多少天
-		for(int year=1900;year<=2015;year++){
-			if(year%4==0&&year%100!=0||year%400==0){
+		for(int i=1900;i<year;i++){
+			if(i%4==0&&i%100!=0||i%400==0){
 				sum+=366;
 			}else{
 				sum+=365;
@@ -19,18 +27,18 @@ public class Calendar {
 		}
 		
 		//计算月份
-		for(int month=1;month<=3;month++){
+		for(int i=1;i<month;i++){
 			//判断2月份
-			if(month==2){
+			if(i==2){
 				//判断是否为闰年
-				if(2016%4==0&&2016%100!=0||2016%400==0){
+				if(year%4==0&&year%100!=0||year%400==0){
 					sum+=29;
 				}else{
 					sum+=28;
 				}
 			}else{
 				//判断是否小月
-				if(month==4||month==6||month==9||month==11){
+				if(i==4||i==6||i==9||i==11){
 					sum+=30;
 				}else{
 					sum+=31;
@@ -38,6 +46,34 @@ public class Calendar {
 			}
 		}
 		sum+=1;
+		
+		//计算月份天数，存在一个变量里
+		switch (month) {
+	      case 4:
+	      case 6:
+	      case 9:
+	      case 11:
+	           day=30;
+		       break;
+	      case 1:
+	      case 3:
+	      case 5:
+	      case 7:
+	      case 8:
+	      case 10:
+	      case 12:
+	    	   day=31;
+	    	   break;
+
+	default:
+		if(year%4==0&&year%100!=0||year%400==0){
+			day=29;
+		}else{
+			day=28;
+		}
+		break;
+	}
+		
 		//天数
 		//System.out.println("1990年1月1日到2016年5月7日一共"+sum+"天");
 		//总天数%7就等于星期几
@@ -49,7 +85,7 @@ public class Calendar {
 		}
 //		System.out.print("2");
 		//输出日期天数
-		for(int i=1;i<=30;i++){
+		for(int i=1;i<=day;i++){
 			if(sum%7==6){
 				System.out.print(i+"\n");
 			}else{
@@ -57,5 +93,6 @@ public class Calendar {
 			}
 			sum++;
 		}
+	
 	}
 }
