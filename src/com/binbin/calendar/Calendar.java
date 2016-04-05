@@ -19,7 +19,7 @@ public class Calendar {
 		}
 		
 		//计算月份
-		for(int month=1;month<=4;month++){
+		for(int month=1;month<=3;month++){
 			//判断2月份
 			if(month==2){
 				//判断是否为闰年
@@ -37,10 +37,25 @@ public class Calendar {
 				}
 			}
 		}
-		sum+=7;
+		sum+=1;
 		//天数
 		//System.out.println("1990年1月1日到2016年5月7日一共"+sum+"天");
 		//总天数%7就等于星期几
-		System.out.println("2016年5月7日一共"+sum%7);
+		//System.out.println("2016年4月7日"+sum%7);
+		int wekday=sum%7;//星期
+		System.out.println("日\t一\t二\t三\t四\t五\t六");
+		for(int i=1;i<=wekday;i++){
+			System.out.print("\t");
+		}
+//		System.out.print("2");
+		//输出日期天数
+		for(int i=1;i<=30;i++){
+			if(sum%7==6){
+				System.out.print(i+"\n");
+			}else{
+				System.out.print(i+"\t");
+			}
+			sum++;
+		}
 	}
 }
