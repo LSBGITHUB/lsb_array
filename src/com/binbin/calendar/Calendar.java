@@ -40,6 +40,7 @@ public class Calendar {
 		sum+=7;
 		//天数
 		//System.out.println("1990年1月1日到2016年5月7日一共"+sum+"天");
+		//总天数%7就等于星期几
 		System.out.println("2016年5月7日一共"+sum%7);
 	}
 }
